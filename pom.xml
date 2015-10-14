@@ -6,6 +6,7 @@
     <name>AdminCmd</name>
     <url>http://forums.bukkit.org/threads/admn-gen-admincmd-5-4-time-give-tp-repair-heal-kill-item-blacklist-weather-etc-1000.10770/</url>
     <inceptionYear>2012</inceptionYear>
+
     <description>AdminCMD is a powerful plug-in that brings you commands that can give you total management over your server. Featuring the most widely used commands in Bukkit server management such as: inventory management, banishment of bad players, limitation to teleporting, setting spawn and home way points, and much, much more!</description>
     <scm>
         <connection>scm:git:git@github.com:AdminCMD/AdminCMD.git</connection>
@@ -84,40 +85,6 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>2.4</version>
-                <configuration>
-                    <archive>
-                        <manifestEntries>
-                            <Implementation-Title>AdminCmd</Implementation-Title>
-                            <Implementation-Version>${project.version}</Implementation-Version>
-                            <Implementation-Vendor>AdminCmd Team</Implementation-Vendor>
-                            <Specification-Title>AdminCmd</Specification-Title>
-                            <Specification-Version>${project.version}</Specification-Version>
-                            <Specification-Vendor>AdminCmd Team</Specification-Vendor>
-                        </manifestEntries>
-                        <manifestSections>
-                            <manifestSection>
-                                <name>belgium/Balor/</name>
-                                <manifestEntries>
-                                    <Sealed>true</Sealed>
-                                </manifestEntries>
-                            </manifestSection>
-                        </manifestSections>
-                        <addMavenDescriptor>true</addMavenDescriptor>
-                        <pomPropertiesFile>true</pomPropertiesFile>
-                        <manifest>
-                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                            <addClasspath>false</addClasspath>
-                            <classpathLayoutType>custom</classpathLayoutType>
-                            <customClasspathLayout>../lib/$${artifact.artifactId}.$${artifact.extension}</customClasspathLayout>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
@@ -155,63 +122,6 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <version>3.3</version>
-                <configuration>
-                    <reportPlugins>
-                        <plugin>
-                            <groupId>org.codehaus.mojo</groupId>
-                            <artifactId>jxr-maven-plugin</artifactId>
-                            <version>2.0-beta-1</version>
-                            <configuration>
-                                <linkJavadoc>true</linkJavadoc>
-                                <javadocDir>${project.reporting.outputDirectory}/AdminCmd/apidocs</javadocDir>
-                            </configuration>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-javadoc-plugin</artifactId>
-                            <version>2.7</version>
-                            <configuration>
-                                <linksource>true</linksource>
-                                <splitindex>true</splitindex>
-                            </configuration>
-                            <reportSets>
-                                <reportSet>
-                                    <reports>
-                                        <report>javadoc</report>
-                                    </reports>
-                                </reportSet>
-                            </reportSets>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-project-info-reports-plugin</artifactId>
-                            <version>2.7</version>
-                            <configuration>
-                                <dependencyDetailsEnabled>true</dependencyDetailsEnabled>
-                                <dependencyLocationsEnabled>true</dependencyLocationsEnabled>
-                                <webAccessUrl>https://github.com/Belphemur/AdminCmd</webAccessUrl>
-                                <anonymousConnection>scm:git:git@github.com:Belphemur/AdminCmd.git</anonymousConnection>
-                                <developerConnection>scm:git:git@github.com:Belphemur/AdminCmd.git</developerConnection>
-                            </configuration>
-                            <reportSets>
-                                <reportSet>
-                                    <reports>
-                                        <report>index</report>
-                                        <report>dependencies</report>
-                                        <report>issue-tracking</report>
-                                        <report>license</report>
-                                        <report>project-team</report>
-                                    </reports>
-                                </reportSet>
-                            </reportSets>
-                        </plugin>
-                    </reportPlugins>
-                </configuration>
             </plugin>
 
             <plugin>
@@ -267,80 +177,24 @@
         </pluginManagement>
     </build>
     <repositories>
-        <repository>
-            <id>myoc-repo</id>
-            <url>http://jeterlp.admincmd.com/maven-repo/</url>
-        </repository>
-        
-        <repository>
-			<id>bukkit-repo</id>
-			<url>http://repo.bukkit.org/content/groups/public/</url>
-		</repository>
-		
 		<repository>
-			<id>vault-repo</id>
-			<url>http://nexus.theyeticave.net/content/repositories/pub_releases</url>
-		</repository>
-		
-		<repository>
-			<id>Plugin Metrics</id>
-			<url>http://repo.mcstats.org/content/repositories/public</url>
+			<id>PP</id>
+			<url>http://nexus.myplayplanet.net/content/groups/public/</url>
 		</repository>
     </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <snapshots />
-            <id>BukkitDev</id>
-            <name>BukkitDev</name>
-            <url>http://www.gestdown.info:8888/nexus/content/groups/BukkitDev/</url>
-        </pluginRepository>
-    </pluginRepositories>
+
     <dependencies>
-        <dependency>
-            <groupId>net.sf.opencsv</groupId>
-            <artifactId>opencsv</artifactId>
-            <version>2.1</version>
-            <type>jar</type>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit-dep</artifactId>
-            <version>4.10</version>
-            <scope>test</scope>
-        </dependency>	      
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
-            <version>1.7.5-R0.1-SNAPSHOT</version>                        
+            <version>1.7.10-R0.1-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>net.milkbowl.vault</groupId>
-            <artifactId>Vault</artifactId>
-            <version>[1.2,)</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mcstats</groupId>
-            <artifactId>metrics</artifactId>
-            <version>[1.,)</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>de.JeterLP</groupId>
-            <artifactId>MakeYourOwnCommands</artifactId>
-            <version>2.0.0</version>
-        </dependency>
-        
     </dependencies>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.6</maven.compiler.source>
         <maven.compiler.target>1.6</maven.compiler.target>
     </properties>
     <version>8.0.0-SNAPSHOT</version>
-    <parent>
-    	<groupId>de.pro_crafting</groupId>
-    	<artifactId>Core</artifactId>
-    	<version>0.1.0-SNAPSHOT</version>
-    </parent>
 </project>
